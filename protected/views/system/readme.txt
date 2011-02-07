@@ -1,0 +1,1 @@
+此目录包括所有的系统视图文件。系统视图文件是显示错误和异常的模板。可通过CWebApplication::systemViewPath定制。

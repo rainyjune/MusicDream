@@ -1,0 +1,60 @@
+﻿<!--
+CMP4配置文件
+
+如果支持多个并列地址，一律用英文逗号(,)隔开
+更多详细参数说明，请参见CMP交流论坛http://bbs.cenfun.com/
+需要加载api例子插件，请设置：
+plugins = "plugins/cmp_api.swf"
+plugins目录中还有：
+autoskin.swf  自动皮肤更换插件
+download.swf  音乐下载插件
+
+需要自定义声音频谱视觉效果插件，请设置：
+mixer_src = "plugins/revolt.swf"
+附另外两种效果：
+mixer_src = "plugins/mixer3d.swf"
+mixer_src = "plugins/equalizer.swf"
+
+
+src_handler,lrc_handler为自动地址和歌词处理
+将自动替换大括号中的内容为对应标记的值，如：
+src_handler = "http://127.0.0.1/src_handler.php?vid={vid}"
+lrc_handler = "http://127.0.0.1/lrc_handler.php?title={label}&rd={rd}"
+
+特殊值替换，随机数：
+{rd}  替换成一个随机数
+{rd1}  替换成一个1位的随机数
+{rd2}  替换成一个1位或2位的随机数
+如果想替换成一个总是2位的随机数请叠加使用：{rd1}{rd1}
+其他情况也请用类似方法组合
+
+skins皮肤中的scplayer.zip和vplayer.zip皮肤是使用CMP4的API接口实现的
+由于没有控制面板，要换回其他皮肤可使用快捷键Ctrl + 数字键，如Ctrl + 0将换回默认皮肤
+更多皮肤官方下载：http://bbs.cenfun.com/viewthread.php?tid=11155
+
+所有配置参数说明请见：http://bbs.cenfun.com/viewthread.php?tid=10891
+
+-->
+<cmp 
+	name = "MusicDream -『享受音乐』" 
+	link = "http://musicdream.dreamneverfall.cn/" 
+	description = "CMP v4.0"
+	logo = "{src:logo.png,xywh:[10R,10R,0,0]}"
+
+	skins = "skins/flamplayer.zip,skins/qqplayer.zip,skins/wmp11.zip,skins/exobud_plastic.zip"
+	plugins = ""
+	backgrounds = "{src:plugins/bigbg.swf,repeat:1}"
+	lists = ""
+
+	src_handler = "" 
+	lrc_handler = ""
+	mixer_src = "plugins/equalizer.swf"
+
+	skin_id = "2"
+
+	play_id = ""
+	auto_play = "1"
+	list_delete = "1"
+
+	counter = ""
+/>
