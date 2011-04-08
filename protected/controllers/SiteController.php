@@ -1,7 +1,7 @@
 <?php
 class SiteController extends Controller
 {
-    public  $defaultAction='page';
+    //public  $defaultAction='page';
     /**
      * Declares class-based actions.
      */
@@ -27,4 +27,5 @@ class SiteController extends Controller
                 'error'=>array('class'=>'application.controllers.site.ErrorAction'),
         );
     }
+
 }

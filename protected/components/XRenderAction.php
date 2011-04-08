@@ -1,9 +1,4 @@
 <?php
-/* 
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
  * Description of XRenderAction
  *
@@ -15,9 +10,11 @@ class XRenderAction extends CAction{
 	 * Runs the action.
 	 * This method is invoked by the controller owning this action.
 	 */
+	/*
 	public function run(){
        // override this method
     }
+	*/
 
 	/**
 	 * Redirects the browser to the specified URL or route (controller/action).

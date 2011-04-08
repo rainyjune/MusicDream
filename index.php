@@ -1,5 +1,6 @@
 <?php
 // change the following paths if necessary
+//error_reporting(0);
 $yii=dirname(__FILE__).'/yiiframework/yii.php';
 $config=dirname(__FILE__).'/protected/config/main.php';
 // remove the following lines when in production mode
