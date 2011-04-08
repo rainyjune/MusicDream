@@ -1,12 +1,9 @@
 <?php
 class UpdateAction extends XRenderAction
 {
-    public function run()
+    public function run($id)
     {
-        if(isset ($_GET['id']))
-            $id=(int)$_GET['id'];
-        else
-            throw new CHttpException (404, 'invalid request');
+		$id=(int)$id;
         $model=$this->loadModel($id);
         // Uncomment the following line if AJAX validation is needed
         // $this->performAjaxValidation($model);
