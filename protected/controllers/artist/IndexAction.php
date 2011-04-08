@@ -1,7 +1,7 @@
 <?php
 class IndexAction extends XRenderAction
 {
-    public function run($region,$type)
+    public function run($region=1,$type=2)
     {
         $criteria=new CDbCriteria();
         $criteria->condition='proved=:proved';

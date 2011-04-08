@@ -63,7 +63,7 @@ class PlaylistController extends Controller
 		);
 	}
 	
-	public function checkOwner($user,$rule)
+	public static function checkOwner($user,$rule)
 	{
 		$rule=false;
 		$playList=new Playlist;
