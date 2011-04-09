@@ -17,10 +17,14 @@ class IndexAction extends XRenderAction
                         array('id'=>'artist',
                               'pagination'=>array('pageSize'=>500,),
         ));
+		$regionData=ArtistArea::model()->findByPk($region);
+		$typeData=ArtistType::model()->findByPk($type);
         $this->render('index',array(
                 'dataProvider'=>$dataProvider,
                 'region'=>$region,
                 'type'=>$type,
+				'regionData'=>$regionData,
+				'typeData'=>$typeData,
         ));
     }
 }

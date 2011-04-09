@@ -8,17 +8,27 @@ $this->menu=array(
 	array('label'=>'管理艺术家', 'url'=>array('admin')),
 );
 
-$nav=range('A','Z');
-foreach($nav as $_a)
-{
-	echo "<a href='#$_a'>$_a</a>&nbsp;";
-}
-
 $artists=array();
+$sortData=array();
 foreach ($dataProvider->rawData as &$value)
 {
+	$sortData[]=$value->sort;
     $artists[$value->sort][]=$value;
 }
+
+$nav=range('A','Z');
+array_unshift($nav,'0-9');
+echo "<div class='view'>";
+echo $regionData->name.$typeData->name."&nbsp;";
+foreach($nav as $_a)
+{
+	if(in_array($_a,$sortData))
+		echo "<a href='#$_a'>$_a</a>&nbsp;&nbsp;";
+	else
+		echo $_a."&nbsp;&nbsp;";
+}
+echo "</div>";
+
 foreach ($artists as $sort=>$artist) {
     echo '<div class="view">';
 	echo "<a name='$sort'></a>";
