@@ -89,6 +89,19 @@ class Album extends CActiveRecord
 		
 		);
 	}
+	public function scopes()
+	{
+		return array(
+			'published'=>array(
+				'condition'=>'proved='.self::STATUS_PROVED,
+			),
+			'recently'=>array(
+				'order'=>'add_time DESC',
+				'limit'=>5,
+			),
+		);
+	}
+
 	public function addComment($comment)
 	{
 		$comment->item_id=$this->id;

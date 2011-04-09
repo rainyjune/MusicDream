@@ -1,8 +1,6 @@
 <ul>
 <?php
 $artistAreas=ArtistArea::model()->findAll();
-//echo '<pre>';
-//var_dump($artistAreas);
 foreach($artistAreas as $area)
 {
 	echo '<li>';
