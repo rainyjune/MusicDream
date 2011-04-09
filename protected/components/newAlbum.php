@@ -8,7 +8,6 @@ class newAlbum extends CPortlet
 	}
 	public function run()
 	{
-		echo 'Hello newAlbum';
 		$this->render('newReleaseAlbum');
 	}
 }  
