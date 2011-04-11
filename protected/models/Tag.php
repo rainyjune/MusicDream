@@ -8,6 +8,7 @@ class Tag extends CActiveRecord
 	/**
 	 * The followings are the available columns in table 'tags':
 	 * @var integer $id
+	 * @var integer $dir_id
 	 * @var string $name
 	 */
 
@@ -39,6 +40,7 @@ class Tag extends CActiveRecord
 			array('name', 'required'),
 			array('name', 'length', 'max'=>128),
 			array('name','unique'),
+			array('dir_id','numerical','integerOnly'=>true),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('id, name', 'safe', 'on'=>'search'),
@@ -89,6 +91,7 @@ class Tag extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
+			'dir_id'=>'标签分类ID',
 			'name' => '标签',
 		);
 	}
@@ -121,6 +124,8 @@ class Tag extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
+
+		$criteria->compare('dir_id',$this->dir_id);
 
 		$criteria->compare('name',$this->name,true);
 

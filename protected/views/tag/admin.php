@@ -43,6 +43,7 @@ or <b>=</b>) 以指定如何完成对比。
 	'summaryText'=>'这是 {start} 到 {end} 共 {count} 条记录',
 	'columns'=>array(
 		'id',
+		'dir_id',
 		'name',
 		array(
 			'class'=>'CButtonColumn',

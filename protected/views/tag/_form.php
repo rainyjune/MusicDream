@@ -15,6 +15,15 @@
 		<?php echo $form->error($model,'name'); ?>
 	</div>
 
+	<div class="row">
+		<?php echo $form->labelEx($model,'dir_id'); ?>
+		<?php
+			$tag=Tagdir::getAll();
+			array_unshift($tag,'请选择');
+		?>
+		<?php echo $form->dropDownList($model,'dir_id',$tag) ?>
+		<?php echo $form->error($model,'dir_id'); ?>
+	</div>
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
 	</div>
