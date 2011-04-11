@@ -1,16 +1,11 @@
 <div class="view">
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('id')); ?>:</b>
-	<?php echo CHtml::link(CHtml::encode($data->id), array('view', 'id'=>$data->id)); ?>
+	<p><strong><?php echo CHtml::encode($data->name); ?></strong></p>
 	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('name')); ?>:</b>
-	<?php echo CHtml::encode($data->name); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('description')); ?>:</b>
-	<?php echo CHtml::encode($data->description); ?>
-	<br />
-
-
+	<?php
+	foreach($data->tags as $tag)
+	{
+		echo CHtml::link($tag->name,array('tag/view','id'=>$tag->id))."(".count($tag->items).")";
+	}
+	?>
 </div>

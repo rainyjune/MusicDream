@@ -34,15 +34,14 @@
 			'items'=>array(
 				array('label'=>'主页', 'url'=>array('/')),
 //				array('label'=>'关于', 'url'=>array('/site/page', 'view'=>'about')),
-				array('label'=>'联系', 'url'=>array('/site/contact')),
 				//array('label'=>'栏目', 'url'=>array('/menu/index')),
 				//array('label'=>'用户', 'url'=>array('/user/index')),
-				array('label'=>'艺术家', 'url'=>array('/artist/index')),
+				array('label'=>'歌手库', 'url'=>array('/artist/index')),
 				//array('label'=>'艺术家地区', 'url'=>array('/artistArea/index')),
 				//array('label'=>'艺术家类型', 'url'=>array('/artistType/index')),
-				array('label'=>'专辑', 'url'=>array('/album/index')),
-				array('label'=>'音乐', 'url'=>array('/music/index')),
-				//array('label'=>'标签', 'url'=>array('/tag/index')),
+				//array('label'=>'专辑', 'url'=>array('/album/index')),
+				//array('label'=>'音乐', 'url'=>array('/music/index')),
+				array('label'=>'标签', 'url'=>array('/tagdir/index')),
 				//array('label'=>'系统变量', 'url'=>array('/vars/index'),'visible'=>Yii::app()->user->name=="admin"),
 				array('label'=>'我的播放列表','url'=>array('/playlist/index'),'visible'=>!Yii::app()->user->isGuest),
 				array('label'=>'管理面板','url'=>array('/dashboard/index'),'visible'=>Yii::app()->user->name=="admin"),
@@ -63,7 +62,7 @@
 	<?php echo $content; ?>
 
 	<div id="footer">
-		<?php echo  Yii::app()->params['footerinfo'];?><br />
+		<?php echo  Yii::app()->params['footerinfo'];?>&nbsp;<a href="index.php?r=site/contact">意见反馈</a><br />
 		<?php echo Yii::powered(); ?>
 	</div><!-- footer -->
 
