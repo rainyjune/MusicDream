@@ -57,8 +57,9 @@ class Tag extends CActiveRecord
 		return array(
 			//'artists'=>array(self::MANY_MANY,'Artist','artists_tags(tag_id,artist_id)'),
 			//'albums'=>array(self::MANY_MANY,'Album','albums_tags(tag_id,album_id)'),
-			//'musics'=>array(self::MANY_MANY,'Music','musics_tags(tag_id,music_id)'),
-			'items' => array(self::HAS_MANY, 'ItemsTags', 'tag_id'),
+			'musicCount'=>array(self::STAT,'ItemsTags','tag_id','condition'=>'item_type='.ItemsTags::MUSIC_TYPE),
+			'musics'=>array(self::MANY_MANY,'Music','items_tags(tag_id,item_id)','condition'=>'item_type='.ItemsTags::MUSIC_TYPE),
+			//'items' => array(self::HAS_MANY, 'ItemsTags', 'tag_id'),
 		);
 	}
 	

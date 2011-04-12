@@ -5,7 +5,7 @@
 	<?php
 	foreach($data->tags as $tag)
 	{
-		echo CHtml::link($tag->name,array('tag/view','id'=>$tag->id))."(".count($tag->items).")";
+		echo CHtml::link($tag->name,array('tag/view','id'=>$tag->id))."(".$tag->musicCount.")";
 	}
 	?>
 </div>

@@ -80,6 +80,7 @@ class Music extends CActiveRecord
 			'addUser' => array(self::BELONGS_TO, 'User', 'add_uid'),
 			'artist' => array(self::BELONGS_TO, 'Artist', 'artist_id'),
 			'comments'=>array(self::HAS_MANY,'Comment','item_id','condition'=>'comments.type_id='.Comment::MUSIC_TYPE,'order'=>'comments.create_time DESC'),
+			'tags'=>array(self::MANY_MANY,'ItemsTags','items_tags(item_id,tag_id)','condition'=>'item_type='.ItemsTags::MUSIC_TYPE),
 			'commentCount' => array(self::STAT, 'Comment', 'item_id', 'condition'=>'type_id='.Comment::MUSIC_TYPE),
 		);
 	}

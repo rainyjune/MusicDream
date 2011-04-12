@@ -25,6 +25,11 @@ class ItemsTags extends CActiveRecord
 		return parent::model($className);
 	}
 
+	public function primaryKey()
+	{
+		return array('item_type','tag_id');
+	}
+
 	/**
 	 * @return string the associated database table name
 	 */
@@ -58,6 +63,7 @@ class ItemsTags extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'tag' => array(self::BELONGS_TO, 'Tags', 'tag_id'),
+			'music'=>array(self::BELONGS_TO,'Music','item_id','condition'=>'item_type='.self::MUSIC_TYPE),
 		);
 	}
 

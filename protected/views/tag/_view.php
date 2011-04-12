@@ -8,5 +8,4 @@
 	<?php echo CHtml::encode($data->name); ?>
 	<br />
 
-
 </div>
