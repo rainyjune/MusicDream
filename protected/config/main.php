@@ -91,6 +91,17 @@ return array(
 					'class'=>'CWebLogRoute',
 				),
 				*/
+				array(
+					'class'=>'CProfileLogRoute',
+				),
+			),
+		),
+
+		#7.Memcache
+		'cache'=>array(
+			'class'=>'system.caching.CMemCache',
+			'servers'=>array(
+				array('host'=>'localhost','port'=>11211,'weight'=>40),
 			),
 		),
 	),

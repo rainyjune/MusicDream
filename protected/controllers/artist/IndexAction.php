@@ -13,10 +13,21 @@ class IndexAction extends XRenderAction
         $criteria->addSearchCondition('area_id',$region);
         $criteria->addSearchCondition('type_id',$type);
         $rawData=Artist::model()->findAll($criteria);
-        $dataProvider=new CArrayDataProvider($rawData,
+		Yii::beginProfile('s');
+		$value=Yii::app()->cache->get('ARTISTS');
+		if($value===false)
+		{
+        	$dataProvider=new CArrayDataProvider($rawData,
                         array('id'=>'artist',
                               'pagination'=>array('pageSize'=>500,),
-        ));
+	        ));
+			Yii::app()->cache->set('ARTISTS',$dataProvider,10);
+		}
+		else
+		{
+			$dataProvider=$value;
+		}
+		Yii::endProfile('s');
 		$regionData=ArtistArea::model()->findByPk($region);
 		$typeData=ArtistType::model()->findByPk($type);
         $this->render('index',array(
