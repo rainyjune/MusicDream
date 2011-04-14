@@ -15,6 +15,7 @@ class AlbumController extends Controller
     public function  actions() {
         return array(
             'view'=>array('class'=>'application.controllers.album.ViewAction'),
+			'newRelease'=>array('class'=>'application.controllers.album.NewReleaseAction'),
             'newComment'=>array('class'=>'application.controllers.album.NewCommentAction'),
             'index'=>array('class'=>'application.controllers.album.IndexAction'),
             'admin'=>array('class'=>'application.controllers.album.AdminAction'),
@@ -44,7 +45,7 @@ class AlbumController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view','newComment'),
+				'actions'=>array('index','view','newComment','newRelease'),
 				'users'=>array('*'),
 			),
 			/*array('allow', // allow authenticated user to perform 'create' and 'update' actions

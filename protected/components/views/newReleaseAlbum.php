@@ -1,4 +1,4 @@
-<p><strong>最新专辑</strong></p>
+<p><strong><?php echo CHtml::link('最新专辑',array('album/newRelease'));?></strong></p>
 <div style="clear:both;width:100%">
 <?php foreach(Album::model()->published()->recently()->findAll() as $album):?>
 	<div style="float:left;text-align:center;">
