@@ -7,7 +7,6 @@ class ItemsTags extends CActiveRecord
 {
 	/**
 	 * The followings are the available columns in table 'items_tags':
-	 * @var integer $id
 	 * @var integer $item_type
 	 * @var integer $item_id
 	 * @var integer $tag_id
@@ -50,7 +49,7 @@ class ItemsTags extends CActiveRecord
 			array('item_type, item_id, tag_id', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, item_type, item_id, tag_id', 'safe', 'on'=>'search'),
+			array('item_type, item_id, tag_id', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -73,7 +72,6 @@ class ItemsTags extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id' => 'ID',
 			'item_type' => 'Item Type',
 			'item_id' => 'Item',
 			'tag_id' => 'Tag',
@@ -103,11 +101,6 @@ class ItemsTags extends CActiveRecord
 	{
 		$oldTags=self::string2array($oldTags);
 		$newTags=self::string2array($newTags);
-/*		echo '<pre>';
-		var_dump(array_values(array_diff($oldTags,$newTags)));
-//		var_dump($newTags);
-		
-		exit;*/
 		$this->addTags(array_values(array_diff($newTags,$oldTags)),$itemtype,$itemid);
 		$this->removeTags(array_values(array_diff($oldTags,$newTags)),$itemtype,$itemid);
 	}
@@ -123,7 +116,6 @@ class ItemsTags extends CActiveRecord
 		foreach($tags as $name)
 		{
 			$tag=NULL;
-			//echo $name;
 			$tag=Tag::model()->find("name='$name'");
 			if(!$tag)
 			{
@@ -132,8 +124,6 @@ class ItemsTags extends CActiveRecord
 				$tag->name=$name;
 				$tag->save();
 			}
-			//var_dump($tag->id);
-			//exit;
 			$newItemTag=new ItemsTags();
 			$newItemTag->item_type=$itemtype;
 			$newItemTag->item_id=(int)$itemid;
@@ -146,15 +136,11 @@ class ItemsTags extends CActiveRecord
 	{
 		if(empty($tags))
 			return;
-//		echo 'removetag';exit;
 		foreach($tags as $name)
 		{
-			//$tag=Tag::model()->find(array("name"=>$name));
-			//var_dump($tag->id);exit;
 			$sql="select id from tags where name='".$name."'";
 			$command=Yii::app()->db->createCommand($sql);
 			$result=$command->queryAll();
-			//var_dump($result[0]['id']);exit;
 			$criteria=new CDbCriteria;
 			$criteria->condition='item_type='.$itemtype.' and item_id='.(int)$itemid.' and tag_id='.(int)$result[0]['id'];
 			self::model()->deleteAll($criteria);
@@ -172,8 +158,6 @@ class ItemsTags extends CActiveRecord
 		// should not be searched.
 
 		$criteria=new CDbCriteria;
-
-		$criteria->compare('id',$this->id);
 
 		$criteria->compare('item_type',$this->item_type);
 

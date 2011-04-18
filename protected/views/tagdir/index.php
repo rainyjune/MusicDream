@@ -6,6 +6,7 @@ $this->breadcrumbs=array(
 $this->menu=array(
 	array('label'=>'Create Tagdir', 'url'=>array('create')),
 	array('label'=>'Manage Tagdir', 'url'=>array('admin')),
+	array('label'=>'添加标签','url'=>array('tag/create')),
 );
 ?>
 

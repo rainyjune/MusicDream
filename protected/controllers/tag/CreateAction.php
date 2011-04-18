@@ -12,7 +12,7 @@ class CreateAction extends XRenderAction
         {
             $model->attributes=$_POST['Tag'];
             if($model->save())
-                $this->redirect(array('view','id'=>$model->id));
+                $this->redirect(array('create'));
         }
 
         $this->render('create',array(

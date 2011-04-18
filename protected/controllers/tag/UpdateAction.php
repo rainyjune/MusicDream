@@ -12,7 +12,7 @@ class UpdateAction extends XRenderAction
         {
             $model->attributes=$_POST['Tag'];
             if($model->save())
-                $this->redirect(array('view','id'=>$model->id));
+                $this->redirect(array('/tag/admin'));
         }
 
         $this->render('update',array(
