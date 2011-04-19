@@ -8,7 +8,6 @@ class Album extends CActiveRecord
 	/**
 	 * The followings are the available columns in table 'album':
 	 * @var integer $id
-	 * @var integer $menu_id
 	 * @var integer $add_uid
 	 * @var string $sort
 	 * @var string $name
@@ -57,8 +56,8 @@ class Album extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('menu_id,sort, name, artist_id,company, language, introduction, pub_time,top,recommend,proved', 'required'),
-			array('menu_id, artist_id', 'numerical', 'integerOnly'=>true),
+			array('sort, name, artist_id,company, language, introduction, pub_time,top,recommend,proved', 'required'),
+			array('artist_id', 'numerical', 'integerOnly'=>true),
 			array('sort', 'length', 'max'=>8),
 			array('name, company', 'length', 'max'=>255),
 			array('language', 'length', 'max'=>15),
@@ -67,8 +66,7 @@ class Album extends CActiveRecord
 			array('image', 'file', 'types'=>'jpg, gif, png','allowEmpty'=>true),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			//array('id, menu_id, add_uid, sort, name, artist_id, company, language, introduction, picture, pub_time, top, recommend, click, add_time, proved, tag', 'safe', 'on'=>'search'),
-			array('name,menu_id,proved','safe','on'=>'search')
+			array('name,proved','safe','on'=>'search')
 		);
 	}
 
@@ -80,7 +78,6 @@ class Album extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'menu' => array(self::BELONGS_TO, 'Menu', 'menu_id'),
 			'addUser' => array(self::BELONGS_TO, 'User', 'add_uid'),
 			'artist' => array(self::BELONGS_TO, 'Artist', 'artist_id'),
 			'musics' => array(self::HAS_MANY, 'Music', 'album_id','condition'=>'musics.proved='.Music::STATUS_PROVED,'order'=>'musics.add_time'),
@@ -125,7 +122,6 @@ class Album extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'menu_id' => '栏目',
 			'add_uid' => '添加者',
 			'sort' => '排序',
 			'name' => '名字',
@@ -226,7 +222,6 @@ class Album extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('name',$this->name,true);
-		$criteria->compare('menu_id',$this->menu_id);
 		$criteria->compare('proved',$this->proved);
 
 		return new CActiveDataProvider(get_class($this), array(

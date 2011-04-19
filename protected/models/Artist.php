@@ -10,7 +10,6 @@ class Artist extends CActiveRecord
      * @var integer $id
      * @var integer $type_id
      * @var integer $area_id
-     * @var integer $menu_id
      * @var string $sort
      * @var string $name
      * @var string $picture
@@ -56,8 +55,8 @@ class Artist extends CActiveRecord
         // NOTE: you should only define rules for those attributes that
         // will receive user inputs.
         return array(
-            array('sort, name, type_id, area_id, menu_id, proved', 'required'),
-            array('type_id, area_id, menu_id', 'numerical', 'integerOnly'=>true),
+            array('sort, name, type_id, area_id, proved', 'required'),
+            array('type_id, area_id', 'numerical', 'integerOnly'=>true),
             array('sort', 'length', 'max'=>8),
             array('name, birthday, native_place', 'length', 'max'=>255),
             array('proved', 'in', 'range'=>array(0,1)),
@@ -65,7 +64,7 @@ class Artist extends CActiveRecord
             array('picture,intro,_tags', 'safe'),
             //array('_tags','normalizeTags','on'=>'create,update'),
             array('image', 'file', 'types'=>'jpg, gif, png','allowEmpty'=>true),
-            array('type_id,area_id,menu_id,name,proved','safe','on'=>'search'),
+            array('type_id,area_id,name,proved','safe','on'=>'search'),
         );
     }
 	
@@ -79,7 +78,6 @@ class Artist extends CActiveRecord
                 'type' => array(self::BELONGS_TO, 'ArtistType', 'type_id'),
                 'area' => array(self::BELONGS_TO, 'ArtistArea', 'area_id'),
                 'addUser' => array(self::BELONGS_TO, 'User', 'add_uid'),
-                'menu' => array(self::BELONGS_TO, 'Menu', 'menu_id'),
                 'musics' => array(self::HAS_MANY, 'Music', 'artist_id','condition'=>'musics.proved='.Music::STATUS_PROVED,'order'=>'musics.add_time'),
                 'comments'=>array(self::HAS_MANY,'Comment','item_id','condition'=>'comments.type_id='.Comment::ARTIST_TYPE,'order'=>'comments.create_time DESC'),
                 'commentCount' => array(self::STAT, 'Comment', 'item_id', 'condition'=>'type_id='.Comment::ARTIST_TYPE),
@@ -113,7 +111,6 @@ class Artist extends CActiveRecord
                 'id' => 'ID',
                 'type_id' => '类型',
                 'area_id' => '地区',
-                'menu_id' => '栏目',
                 'sort' => '排序',
                 'name' => '名字',
                 'picture' => '图像',
@@ -230,7 +227,6 @@ class Artist extends CActiveRecord
         $criteria->compare('name',$this->name,true);
         $criteria->compare('type_id',$this->type_id);
         $criteria->compare('area_id',$this->area_id);
-        $criteria->compare('menu_id',$this->menu_id);
         return new CActiveDataProvider(get_class($this), array(
                 'criteria'=>$criteria,
                 'sort'=>array(

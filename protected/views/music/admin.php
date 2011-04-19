@@ -46,11 +46,6 @@ $this->widget('zii.widgets.grid.CGridView', array(
 	'columns'=>array(
 		//'id',
 		'name',
-		array(
-			'name'=>'menu_id',
-			'value'=>'Menu::item($data->menu_id)',
-			'filter'=>Menu::items(),
-		),
 		//'album_id',
 		//'artist_id',
 		//'add_uid',

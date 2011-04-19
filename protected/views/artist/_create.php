@@ -26,13 +26,6 @@
 		<?php echo $form->error($model,'area_id'); ?>
 	</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'menu_id'); ?>
-		<?php //echo $form->textField($model,'menu_id'); 
-			echo $form->dropDownList($model,'menu_id',Menu::getAll());
-		?>
-		<?php echo $form->error($model,'menu_id'); ?>
-	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'sort'); ?>

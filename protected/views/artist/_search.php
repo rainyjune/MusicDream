@@ -20,10 +20,6 @@
 		<?php echo $form->textField($model,'area_id'); ?>
 	</div>
 
-	<div class="row">
-		<?php echo $form->label($model,'menu_id'); ?>
-		<?php echo $form->textField($model,'menu_id'); ?>
-	</div>
 
 	<div class="row">
 		<?php echo $form->label($model,'sort'); ?>

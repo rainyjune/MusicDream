@@ -9,7 +9,6 @@ class CreateAction extends XRenderAction
             $artist_id=$_GET['artist_id'];
             $artist_info=Artist::model()->findByPk($artist_id);
             $model->artist_id=$artist_id;
-            $model->menu_id=$artist_info->menu_id;
         }
         // Uncomment the following line if AJAX validation is needed
         // $this->performAjaxValidation($model);

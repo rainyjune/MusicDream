@@ -9,7 +9,6 @@ class Music extends CActiveRecord
 	 * The followings are the available columns in table 'music':
 	 * @var integer $id
 	 * @var string $name
-	 * @var integer $menu_id
 	 * @var integer $album_id
 	 * @var integer $artist_id
 	 * @var integer $add_uid
@@ -52,8 +51,8 @@ class Music extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('name,menu_id,artist_id,order,recommend,top,proved', 'required'),
-			array('menu_id, artist_id, order', 'numerical', 'integerOnly'=>true),
+			array('name,artist_id,order,recommend,top,proved', 'required'),
+			array('artist_id, order', 'numerical', 'integerOnly'=>true),
 			array('album_id','numerical','integerOnly'=>true,'allowEmpty'=>true),
 			array('name', 'length', 'max'=>255),
 			array('recommend, top, proved', 'in', 'range'=>array(0,1)),
@@ -61,9 +60,7 @@ class Music extends CActiveRecord
 			array('musicfile', 'file', 'types'=>'mp3,wma','maxSize'=>1024*1024*10,'allowEmpty'=>true),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			//array('id, name, menu_id, album_id, artist_id, add_uid, order, click, add_time, lyric, url, recommend, top, proved, tag', 'safe', 'on'=>'search'),
-			//array('id,name,menu_id,album_id,artist_id,add_uid','safe','on'=>'search'),
-			array('name,menu_id,proved','safe','on'=>'search')
+			array('name,proved','safe','on'=>'search')
 		);
 	}
 
@@ -75,7 +72,6 @@ class Music extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'menu' => array(self::BELONGS_TO, 'Menu', 'menu_id'),
 			'album' => array(self::BELONGS_TO, 'Album', 'album_id'),
 			'addUser' => array(self::BELONGS_TO, 'User', 'add_uid'),
 			'artist' => array(self::BELONGS_TO, 'Artist', 'artist_id'),
@@ -93,7 +89,6 @@ class Music extends CActiveRecord
 		return array(
 			'id' => 'ID',
 			'name' => '名字',
-			'menu_id' => '栏目',
 			'album_id' => '专辑',
 			'artist_id' => '艺术家ID',
 			'add_uid' => '添加者ID',
@@ -201,7 +196,6 @@ class Music extends CActiveRecord
 
 		$criteria->compare('name',$this->name,true);
 
-		$criteria->compare('menu_id',$this->menu_id);
 
 		//$criteria->compare('album_id',$this->album_id);
 

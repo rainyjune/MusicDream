@@ -1,8 +1,5 @@
 <div class="view">
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('menu_id')); ?>:</b>
-	<?php echo CHtml::encode($data->menu->menu_name); ?>
-	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('add_uid')); ?>:</b>
 	<?php echo CHtml::encode($data->addUser->username); ?>

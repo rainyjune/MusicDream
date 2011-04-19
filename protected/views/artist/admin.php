@@ -64,11 +64,7 @@ $('.search-form form').submit(function(){
 			'type'=>'raw',
 			'value'=>'CHtml::link(CHtml::encode($data->name), $data->url)'
 		),
-		array(
-			'name'=>'menu_id',
-			'value'=>'Menu::item($data->menu_id)',
-			'filter'=>Menu::items(),
-		),
+		
 		/*
 		'picture',
 		'birthday',

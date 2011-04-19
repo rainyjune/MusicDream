@@ -15,10 +15,6 @@
 		<?php echo $form->textField($model,'name',array('size'=>60,'maxlength'=>255)); ?>
 	</div>
 
-	<div class="row">
-		<?php echo $form->label($model,'menu_id'); ?>
-		<?php echo $form->textField($model,'menu_id'); ?>
-	</div>
 
 	<div class="row">
 		<?php echo $form->label($model,'album_id'); ?>

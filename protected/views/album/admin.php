@@ -44,12 +44,7 @@ or <b>=</b>) 以指定如何完成对比。
 	'summaryText'=>'这是 {start} 到 {end} 共 {count} 条记录',
 	'columns'=>array(
 		//'id',
-		//'menu_id',
-		array(
-			'name'=>'menu_id',
-			'value'=>'Menu::item($data->menu_id)',
-			'filter'=>Menu::items(),
-		),
+		
 		//'add_uid',
 		//'sort',
 		'name',
