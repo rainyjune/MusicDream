@@ -37,17 +37,16 @@ $('.search-form form').submit(function(){
 )); ?>
 </div><!-- search-form -->
 
-<?php $this->widget('zii.widgets.grid.CGridView', array(
+<?php 
+echo '<pre>';
+var_dump(Lookup::items('PROVED'));
+echo '</pre>';
+$this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'artist-grid',
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
 	'summaryText'=>'这是 {start} 到 {end} 共 {count} 条记录',
 	'columns'=>array(
-		//'id',
-		//'type_id',
-		
-		//'area_id',
-		//'menu_id',
 		array(
 			'name'=>'type_id',
 			'value'=>'ArtistType::item($data->type_id)',
@@ -64,22 +63,11 @@ $('.search-form form').submit(function(){
 			'type'=>'raw',
 			'value'=>'CHtml::link(CHtml::encode($data->name), $data->url)'
 		),
-		
-		/*
-		'picture',
-		'birthday',
-		'native_place',
-		'click',
-		'intro',
-		'add_uid',
-		'add_time',
-		'tag',
-		*/
 		array(
 			'name'=>'proved',
 			'value'=>'Lookup::item("PROVED",$data->proved)',
 			'filter'=>Lookup::items('PROVED'),
-		),
+		),		
 		array(
 			'name'=>'add_time',
 			'type'=>'datetime',
