@@ -7,7 +7,7 @@ class NewReleaseAction extends XRenderAction
 			'criteria'=>array(
 				'condition'=>'t.proved='.Album::STATUS_PROVED,
 				'order'=>'pub_time DESC',
-				'with'=>array('menu','musics','artist'),
+				'with'=>array('musics','artist'),
 				'limit'=>100,
 			),
 			'pagination'=>array(
