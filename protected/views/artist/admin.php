@@ -38,9 +38,6 @@ $('.search-form form').submit(function(){
 </div><!-- search-form -->
 
 <?php 
-echo '<pre>';
-var_dump(Lookup::items('PROVED'));
-echo '</pre>';
 $this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'artist-grid',
 	'dataProvider'=>$model->search(),
