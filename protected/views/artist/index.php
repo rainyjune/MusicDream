@@ -2,7 +2,7 @@
 $this->breadcrumbs=array(
 	'艺术家',
 );
-
+Yii::app()->clientScript->registerScriptFile('js/jquery.floatDiv.js');
 $this->menu=array(
 	array('label'=>'增加艺术家', 'url'=>array('create')),
 	array('label'=>'管理艺术家', 'url'=>array('admin')),
