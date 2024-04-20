@@ -13,18 +13,11 @@ $this->menu=array(
 $siteUrl='http://'.$_SERVER['HTTP_HOST'].Yii::app()->urlManager->baseUrl;
 $playerVars = rawurlencode("{$siteUrl}?r=music/play&id=".$ids);
 ?>
-
+<script src='https://cdn.jsdelivr.net/npm/yuanplayer-core@latest/lib/umd/YuanPlayer.min.js'></script>
+<script src='https://cdn.jsdelivr.net/npm/yuanplayer-theme-bluemonday@latest/lib/umd/YuanPlayerThemeBlueMonday.min.js'></script>
 <table border="1">
   <tr>
-    <td>
-<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,124,0" width="600" height="400" id="cmp">
-                <param name="movie" value="cmp4b100603/cmp.swf?lists=<?php echo $playerVars;?>" />
-                <param name="quality" value="high" />
-                <param name="allowFullScreen" value="true" />
-                <param name="allowScriptAccess" value="always" />
-                <param name="wmode" value="opaque" />
-                <embed pluginspage="http://www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash" wmode="opaque" type="application/x-shockwave-flash" width="600" height="400" name="cmp" src="cmp4b100603/cmp.swf?lists=<?php echo $playerVars;?>" quality="high"  allowfullscreen="true" allowscriptaccess="always" ></embed>
-                </object> &nbsp;</td>
+    <td><div id="playerContainer1"></div></td>
   </tr>
 </table>
 
@@ -94,3 +87,11 @@ if(isset($model)){
 <?php
 }
 ?>
+
+<script>
+const BMPlayer = YuanPlayer.use(YuanPlayerThemeBlueMonday);
+const bmplayer = new BMPlayer({
+  media: <?php echo json_encode($playlist); ?>,
+  container: document.querySelector('#playerContainer1')
+});
+</script>
