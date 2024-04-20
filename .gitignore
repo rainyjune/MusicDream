@@ -1,3 +1,4 @@
 .svn/
 yiiframework/
 assets/*
+protected/runtime/application.log
