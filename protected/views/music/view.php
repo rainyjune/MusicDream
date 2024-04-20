@@ -15,11 +15,8 @@ $playerVars = rawurlencode("{$siteUrl}?r=music/play&id=".$ids);
 ?>
 <script src='https://cdn.jsdelivr.net/npm/yuanplayer-core@latest/lib/umd/YuanPlayer.min.js'></script>
 <script src='https://cdn.jsdelivr.net/npm/yuanplayer-theme-bluemonday@latest/lib/umd/YuanPlayerThemeBlueMonday.min.js'></script>
-<table border="1">
-  <tr>
-    <td><div id="playerContainer1"></div></td>
-  </tr>
-</table>
+
+<div id="playerContainer1"></div>
 
 <?php
 if(isset($model)){

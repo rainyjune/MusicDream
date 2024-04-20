@@ -10,7 +10,7 @@ if(Yii::app()->user->isGuest){
 ?>
     <div class="row">
         <?php echo $form->labelEx($model,'username'); ?>
-        <?php echo $form->textField($model,'username',array('size'=>60,'maxlength'=>128)); ?>
+        <?php echo $form->textField($model,'username',array('size'=>30,'maxlength'=>128)); ?>
         <?php echo $form->error($model,'username'); ?>
     </div>
 <?php }?>

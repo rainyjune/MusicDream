@@ -1,6 +1,6 @@
 <?php $this->beginContent('application.views.layouts.main'); ?>
-<div class="container">
-	<div class="span-19">
+<div class="">
+	<div class="">
 		<div id="content">
 			<?php echo $content; ?>
 		</div><!-- content -->

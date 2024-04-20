@@ -2,6 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<meta name="language" content="en" />
 
 	<!-- blueprint CSS framework -->
@@ -23,7 +24,7 @@
 
 <body>
 
-<div class="container" id="page">
+<div class="" id="page">
 
 	<div id="header">
 		<div id="logo"><?php echo CHtml::encode(Yii::app()->name); ?></div>
