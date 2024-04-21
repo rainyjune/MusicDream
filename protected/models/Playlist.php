@@ -5,133 +5,135 @@
  */
 class Playlist extends CActiveRecord
 {
-	/**
-	 * The followings are the available columns in table 'playlist':
-	 * @var integer $id
-	 * @var string $name
-	 * @var string $intro
-	 * @var integer $uid
-	 * @var integer $add_time
-	 */
+    /**
+     * The followings are the available columns in table 'playlist':
+     * @var integer $id
+     * @var string $name
+     * @var string $intro
+     * @var integer $uid
+     * @var integer $add_time
+     */
 
-	private static $_items=array();
-	/**
-	 * Returns the static model of the specified AR class.
-	 * @return Playlist the static model class
-	 */
-	public static function model($className=__CLASS__)
-	{
-		return parent::model($className);
-	}
+    private static $_items = array();
 
-	/**
-	 * @return string the associated database table name
-	 */
-	public function tableName()
-	{
-		return 'playlist';
-	}
-	
-	public static function getAll()
-	{
-		self::$_items=array();
-		$models=self::model()->findAll();
-		foreach($models as $model)
-			self::$_items[$model->id]=$model->name;
-		return self::$_items;
-	}
-        public static function getAllofCurrentUser()
-	{
-		self::$_items=array();
-		$models=self::model()->findAll('uid='.Yii::app()->user->id);
-		foreach($models as $model)
-			self::$_items[$model->id]=$model->name;
-		return self::$_items;
-	}
+    /**
+     * Returns the static model of the specified AR class.
+     * @return Playlist the static model class
+     */
+    public static function model($className = __CLASS__)
+    {
+        return parent::model($className);
+    }
 
-	/**
-	 * @return array validation rules for model attributes.
-	 */
-	public function rules()
-	{
-		// NOTE: you should only define rules for those attributes that
-		// will receive user inputs.
-		return array(
-			array('name', 'required'),
-			//array('uid, add_time', 'numerical', 'integerOnly'=>true),
-			array('name', 'length', 'max'=>30),
-			array('intro', 'safe'),
-			// The following rule is used by search().
-			// Please remove those attributes that should not be searched.
-			array('id, name', 'safe', 'on'=>'search'),
-		);
-	}
+    /**
+     * @return string the associated database table name
+     */
+    public function tableName()
+    {
+        return 'playlist';
+    }
 
-	/**
-	 * @return array relational rules.
-	 */
-	public function relations()
-	{
-		// NOTE: you may need to adjust the relation name and the related
-		// class name for the relations automatically generated below.
-		return array(
-			'user' => array(self::BELONGS_TO, 'User', 'uid'),
-			'playlistMusics' => array(self::HAS_MANY, 'PlaylistMusic', 'playlist_id'),
-		);
-	}
+    public static function getAll()
+    {
+        self::$_items = array();
+        $models = self::model()->findAll();
+        foreach ($models as $model)
+            self::$_items[$model->id] = $model->name;
+        return self::$_items;
+    }
 
-	/**
-	 * @return array customized attribute labels (name=>label)
-	 */
-	public function attributeLabels()
-	{
-		return array(
-			'id' => 'ID',
-			'name' => '名字',
-			'intro' => '简介',
-			'uid' => 'Uid',
-			'add_time' => '添加时间',
-		);
-	}
-	
-	protected function beforeSave()
-	{
-		if(parent::beforeSave())
-		{
-			if($this->isNewRecord)
-			{
-				$this->uid=Yii::app()->user->id;
-				$this->add_time=time();
-			}			
-			return true;
-		}
-		else
-			return false;
-	}
+    public static function getAllofCurrentUser()
+    {
+        self::$_items = array();
+        $models = self::model()->findAll('uid=' . Yii::app()->user->id);
+        foreach ($models as $model)
+            self::$_items[$model->id] = $model->name;
+        return self::$_items;
+    }
 
-	/**
-	 * Retrieves a list of models based on the current search/filter conditions.
-	 * @return CActiveDataProvider the data provider that can return the models based on the search/filter conditions.
-	 */
-	public function search()
-	{
-		// Warning: Please modify the following code to remove attributes that
-		// should not be searched.
+    /**
+     * @return array validation rules for model attributes.
+     */
+    public function rules()
+    {
+        // NOTE: you should only define rules for those attributes that
+        // will receive user inputs.
+        return array(
+            array('name', 'required'),
+            //array('uid, add_time', 'numerical', 'integerOnly'=>true),
+            array('name', 'length', 'max' => 30),
+            array('intro', 'safe'),
+            // The following rule is used by search().
+            // Please remove those attributes that should not be searched.
+            array('id, name', 'safe', 'on' => 'search'),
+        );
+    }
 
-		$criteria=new CDbCriteria;
+    /**
+     * @return array relational rules.
+     */
+    public function relations()
+    {
+        // NOTE: you may need to adjust the relation name and the related
+        // class name for the relations automatically generated below.
+        return array(
+            'user' => array(self::BELONGS_TO, 'User', 'uid'),
+            'playlistMusics' => array(self::HAS_MANY, 'PlaylistMusic', 'playlist_id'),
+        );
+    }
 
-		$criteria->compare('id',$this->id);
+    /**
+     * @return array customized attribute labels (name=>label)
+     */
+    public function attributeLabels()
+    {
+        return array(
+            'id' => 'ID',
+            'name' => '名字',
+            'intro' => '简介',
+            'uid' => 'Uid',
+            'add_time' => '添加时间',
+        );
+    }
 
-		$criteria->compare('name',$this->name,true);
+    protected function beforeSave()
+    {
+        if (parent::beforeSave()) {
+            if ($this->isNewRecord) {
+                $this->uid = Yii::app()->user->id;
+                $this->add_time = time();
+            }
+            return true;
+        } else
+            return false;
+    }
 
-		//$criteria->compare('intro',$this->intro,true);
+    /**
+     * Retrieves a list of models based on the current search/filter conditions.
+     * @return CActiveDataProvider the data provider that can return the models based on the search/filter conditions.
+     */
+    public function search()
+    {
+        // Warning: Please modify the following code to remove attributes that
+        // should not be searched.
 
-//		$criteria->compare('uid',$this->uid);
+        $criteria = new CDbCriteria;
 
-//		$criteria->compare('add_time',$this->add_time);
+        $criteria->compare('id', $this->id);
 
-		return new CActiveDataProvider(get_class($this), array(
-			'criteria'=>$criteria,
-		));
-	}
+        $criteria->compare('name', $this->name, true);
+
+        // Authenticate users can only see their own playlists
+        if (Yii::app()->user->name !== "admin") {
+            $criteria->compare('uid', Yii::app()->user->id);
+        }
+
+        //$criteria->compare('intro',$this->intro,true);
+        //$criteria->compare('uid',$this->uid);
+        //$criteria->compare('add_time',$this->add_time);
+
+        return new CActiveDataProvider(get_class($this), array(
+            'criteria' => $criteria,
+        ));
+    }
 }
