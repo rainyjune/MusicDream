@@ -1,11 +1,11 @@
 <?php $this->beginContent('application.views.layouts.main'); ?>
-<div class="container">
-	<div class="span-19">
+<div class="">
+	<div class="">
 		<div id="content">
 			<?php echo $content; ?>
 		</div><!-- content -->
 	</div>
-	<div class="span-5 last">
+	<div class="">
 		<div id="sidebar">
 		<?php
 		if(!Yii::app()->user->isGuest)

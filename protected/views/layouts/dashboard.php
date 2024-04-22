@@ -33,7 +33,7 @@
 			<?php echo $content; ?>
 		</div><!-- content -->
 	</div>
-	<div class="span-5 last">
+	<div class="">
 		<div id="sidebar">
 		<?php
 		if(Yii::app()->user->name=="admin")
