@@ -3,6 +3,8 @@ $this->breadcrumbs=array(
 	'标签'=>array('index'),
 	$model->name,
 );
+Yii::app()->clientScript->registerScriptFile("https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js");
+Yii::app()->clientScript->registerCssFile("https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css");
 
 Yii::app()->clientScript->registerScript('addToPlayList', "
 
@@ -23,7 +25,7 @@ Yii::app()->clientScript->registerScript('addToPlayList', "
             cache   : false,
             url     : 'index.php?r=Playlist/addToPlayList',
             data    : $('#albumForm').serializeArray(),
-            success: function(data){ $.fancybox(data);}
+            success: function(data){ $.fancybox.open(data);}
         });
         return false;
     });
