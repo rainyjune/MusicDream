@@ -1,3 +1,3 @@
-<?php $this->pageTitle=Yii::app()->name; ?>
+<?php $this->pageTitle = Yii::app()->name; ?>
 
-<?php $this->widget('application.components.newAlbum');?>
+<?php $this->widget('application.components.newAlbum'); ?>
