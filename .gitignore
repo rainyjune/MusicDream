@@ -1,6 +1,6 @@
 .svn/
 yiiframework/
 assets/*
-protected/runtime/application.log
+protected/runtime/
 .idea/
 .vscode/
