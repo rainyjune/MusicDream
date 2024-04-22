@@ -2,6 +2,9 @@
 # Apache/PHP/Drupal settings:
 #
 
+# prevent httpd from serving dotfiles (.htaccess, .svn, .git, etc.)
+RedirectMatch 403 /\..*$
+
 # Don't show directory listings for URLs which map to a directory.
 Options -Indexes
 
