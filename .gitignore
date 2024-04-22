@@ -2,3 +2,5 @@
 yiiframework/
 assets/*
 protected/runtime/application.log
+.idea/
+.vscode/
