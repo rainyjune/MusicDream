@@ -20,12 +20,13 @@ class ViewAction extends XRenderAction
                 array_push($ans, $this->getTrackData($id));
             }
             $ids=implode('_',$ids);
+        } else if (isset($ids)) {
+            array_push($ans, $this->getTrackData($ids));
         }
         if(isset($ids) && count(explode('_',$ids))==1)
         {
             $post=$this->loadModel();
             $comment=$this->newComment($post);
-            array_push($ans, $this->getTrackData($ids));
 
             $this->render('view',array(
                     'model'=>$post,
