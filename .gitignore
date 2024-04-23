@@ -3,3 +3,4 @@ yiiframework/
 assets/*
 .idea/
 .vscode/
+protected/runtime/
