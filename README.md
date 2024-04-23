@@ -4,8 +4,10 @@ MusicDream is a Yii-powered CMS(Content Management System) for building music we
 
 1. Make sure PHP development environment is ready.
    * Apache
-   * PHP 5.1.0+ (memcache extension is optional)
-   * MySQL
+   * PHP 5.1.0+
+     * GD or ImageMagick extension (required)
+     * Memcache extension (optional)
+   * MySQL or MariaDB
 
 2. Get the latest source code from the GitHub repository:
     ```
